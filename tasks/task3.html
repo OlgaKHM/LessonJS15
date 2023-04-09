@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@800&family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Задача 3</title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <h2>Задача 3.</h2>
+      <p>Створити об’єкт «Авто».</p>
+      <table>
+        <tr>
+          <td>Авто</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Поля(властивості)</td>
+          <td>
+            Марка<br />
+            Розмір бака<br />
+            Кількість наявних літрів<br />
+            Кількість місць<br />
+            Кількість пасажирів
+          </td>
+        </tr>
+        <tr>
+          <td>Методи (дії)</td>
+          <td>
+            Заправка на вказану кількість літрів<br />
+            Виведення кількості пасажирів<br />
+            Додавання пасажирів<br />
+            Висадка пасажирів
+          </td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      let auto = {
+        model: "Audi",
+        tankSize: 100,
+        fuelQuantity: 40,
+        numberOfSeats: 30,
+        numberOfPassengers: 15,
+
+        getRefuelingForSpecifiedNumberOfLiters: function (numberOfLiters) {
+          return this.numberOfSeats + numberOfLiters
+        },
+        getAddingTheSpecifiedNumberOfPassengers: function (numberOfPassengers) {
+          return this.numberOfPassengers + numberOfPassengers
+        },
+        getNumberOfPassengersToDisembark: function (numberOfPassengers) {
+          return this.numberOfPassengers - numberOfPassengers
+        },
+      }
+      document.write(
+        `<h3>Заправка на вказану кількість літрів: ${auto.getRefuelingForSpecifiedNumberOfLiters(
+          30
+        )}</h3>`
+      )
+      document.write(
+        `<h3>Виведення кількості пасажирів: ${auto.numberOfPassengers}</h3>`
+      )
+      document.write(
+        `<h3>Додавання пасажирів: ${auto.getAddingTheSpecifiedNumberOfPassengers(
+          10
+        )}</h3>`
+      )
+      document.write(
+        `<h3>Висадка пасажирів: ${auto.getNumberOfPassengersToDisembark(
+          10
+        )}</h3>`
+      )
+    </script>
+  </body>
+</html>

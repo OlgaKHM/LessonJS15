@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@800&family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Задача 1</title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <h2>Задача 1.</h2>
+      <p>
+        Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з
+        них є функція знаходження суми, а у іншому – функція для знаходження
+        добутку тих, які знаходяться між заданими мінімальним і максимальних
+        значенням. <br />Використати обидва методи стосовно обидвох об’єктів
+        (використати call, apply).
+      </p>
+    </div>
+    <script>
+      let obj1 = {
+        numbers: [10, 56, 28, 73, 44, 81, 7, 12, 35, 62],
+        getSum: function () {
+          return this.numbers.reduce((prevSum, el) => prevSum + el)
+        },
+      }
+      let obj2 = {
+        numbers: [89, 8, 54, 39, 15, 63, 24, 48, 71, 29],
+        getProduc: function (minNumber, maxNumber) {
+          return this.numbers.reduce(
+            (prevProduct, num) =>
+              num >= minNumber && num <= maxNumber
+                ? prevProduct * num
+                : prevProduct,
+            1
+          )
+        },
+      }
+      let sum2 = obj1.getSum.call(obj2)
+      let prod1 = obj2.getProduc.apply(obj1, [20, 50])
+      document.write(`<h3>сума чисел 1 об’єкта : ${obj1.getSum()}</h3>`)
+      document.write(`<h3>сума чисел 2 об’єкта : ${sum2}</h3>`)
+      document.write(`<h3>добуток тих, які знаходяться між заданими мінімальним і максимальним
+        значенням 1 об’єкта : ${prod1}</h3>`)
+      document.write(`<h3>добуток тих, які знаходяться між заданими мінімальним і максимальним
+        значенням 2 об’єкта : ${obj2.getProduc(30, 60)}</h3>`)
+    </script>
+  </body>
+</html>

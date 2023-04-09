@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@800&family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Задача 4</title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <h2>Задача 4.</h2>
+      <p>Розробити клас MultChecker для перевірки таблиці множення.</p>
+      <table>
+        <tr>
+          <td>Поля</td>
+          <td>
+            Число, яке перевіряємо (наприклад, перевірка частини таблиці
+            множення на 7)<br />
+            Кількість правильних відповідей<br />
+            Кількість неправильних відповідей
+          </td>
+        </tr>
+        <tr>
+          <td>Методи</td>
+          <td>
+            Генерування прикладу (метод випадковим чином визначає друге число,
+            перше число фіксоване)
+            <br />
+            Перевірка правильності вказаної відповіді<br />
+            render - виведення інформації про тестування на екран
+          </td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      class MultChecker {
+        constructor(number) {
+          this.number = number
+          this.correctAntswerCounter = 0
+          this.wrongAntswerCounter = 0
+        }
+
+        numberGeneration() {
+          let randomNumber = Math.floor(Math.random() * 10) + 1
+          let correctAntswerCounter = this.number * randomNumber
+          return { randomNumber, correctAntswerCounter }
+        }
+
+        checkingAsswers() {
+          do {
+            let { randomNumber, correctAntswerCounter } =
+              this.numberGeneration()
+            let userAntswer = parseInt(
+              prompt(`скільки буде ${this.number} * ${randomNumber} ?`)
+            )
+            if (correctAntswerCounter === userAntswer)
+              this.correctAntswerCounter++
+            else this.wrongAntswerCounter++
+          } while (confirm("продовжимо?"))
+        }
+
+        render() {
+          document.write(`<h3>перевірка частини таблиці множення на ${this.number}<br>
+            кількість правильних відповідей ${this.correctAntswerCounter}<br>
+            кількість неправильних відповідей ${this.wrongAntswerCounter}</h3>`)
+        }
+      }
+      let multChecker = new MultChecker(7)
+      multChecker.numberGeneration()
+      multChecker.checkingAsswers()
+      multChecker.render()
+    </script>
+  </body>
+</html>
